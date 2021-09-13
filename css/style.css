@@ -9,9 +9,62 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.start{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    margin-bottom: 100px;
+    animation: startAnimation 0.5s;
+    z-index: 3;
+}
+.wall{
+    background-color: #B5C0C7;
+    position: absolute;
+    z-index: 2;
+    width: 160px;
+    height: 80px;
+    bottom: 390px;
+}
+.start p {
+    cursor: pointer;
+    position: absolute;
+    bottom: 400px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+    display: none;
+    animation: startanim 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes startanim {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(120%);
+    }
+}
+@keyframes startAnimation {
+    0%{
+        transform: scale(30);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 .content{
     width: 1520px;
+    display: none;
 }
 .header{
     width: 100%;
@@ -35,13 +88,21 @@ body{
     line-height: 26px;
 }
 .form input{
+    margin-top: 5px;
     width: 515px;
     height: 50px;
     font-size: 18px;
 }
-.form label{
+.question-cont{
     margin-top: 46px;
-    margin-bottom: 8px;
+}
+.question-cont div{
+    display: flex;
+    align-items: center;
+}
+.question{
+    margin-top: 26px;
+    margin-bottom: 5px;
     font-size: 22px;
     font-weight: 700;
 }
@@ -58,15 +119,33 @@ body{
   border: none;
   color: #F15524;
 }
-.r-arrow{
+.arrow-cont{
     position: absolute;
-    bottom: 50px;
-    left: 52%;
-    display: none;
+    bottom: 250px;
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
     cursor: pointer;
 }
-
+.l-arrow,.r-arrow{
+    display: none;
+}
+.radio{
+    width: 22px !important;
+    height: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.label-r{
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.dsp_none{
+    display: none;
+}
 .show{
     display: flex;
 }
+
 

@@ -10,6 +10,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="start">
+            <img class="logo" src="img/logo.svg" alt="logo">
+            <div class="wall"></div>
+            <p class="start-btn"><span>კითხვარის</span><span>დაწყება</span></p>
+        </div>
         <div class="content">
             <header class="header">
                 <img src="img/redberry.svg" alt="RedBerry">
@@ -17,14 +22,64 @@
             </header>
             <div class="main">
                <div class="form-cont">
-                   <form action="" class="form">
+                   <form action="" class="form first-page dsp_none">
+                        <label class="question" for="fname" const="" maxlength="formStorage.length;" let="" currentindex="0;">სახელი*</label>
+                        <input type="text" name="fname" id="fname" minlength="3" maxlength="255" required="">
+                        <p class="fname-p"></p>
+                        <label class="question" for="lname">გვარი*</label>
+                        <input type="text" name="lname" id="lname" minlength="3" maxlength="255" required="">
+                        <p class="lname-p"></p>
+                        <label class="question" for="email">მეილი*</label>
+                        <input type="text" name="email" id="email" minlength="3" maxlength="255" required="">
+                        <p class="email-p"></p>
                    </form>
+                    <form action="" class="form second-page dsp_none">
+                        <div class="question-cont">
+                            <label class="question">გაქვს გადატანილი Covid-19?*</label>
+                            <div>
+                                <input class="radio" type="radio" name="check-c19" value="კი">
+                                <label class="label-r">კი</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="check-c19" value="არა">
+                                <label class="label-r">არა</label> 
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="check-c19" value="ახლა">
+                                <label class="label-r">ახლა მაქვს</label>
+                            </div>
+                      </div>
+                      <div class="question-cont antibody-q dsp_none">
+                            <label class="question">ანტისხეულების ტესტი გაქვს გაკეთებული?*</label>
+                            <div>
+                                <input class="radio" type="radio" name="antibody" value="არა">
+                                <label class="label-r">კი</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="antibody" value="კი">
+                                <label class="label-r" for="არა">არა</label>
+                            </div>
+                      </div> 
+                      <div class="question-cont antibody_num dsp_none">
+                            <label class="question">თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა*</label>
+                            <input type="number" id="antibody-num" placeholder="რიცვხი" minlength="0">
+                            <input type="number" id="quantity"  placeholder="ანტისხეულების რაოდენობა" minlength="0">
+                        </div>
+                        <div class="question-cont checkdate dsp_none">
+                            <label class="question">მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*</label>
+                            <input type="text" id="date_19" placeholder="დდ/თთ/წწ" onfocus="(this.type='date')">
+                        </div>
+                   </form>
+                   <p>*-ით მონიშნული ველების შევსება სავალდებულოა</p>
                </div>
                <div class="img-cont">
                    <img class="main-img" src="" alt="img">
                </div>
-               <img class="r-arrow" src="img/right-arrow.svg" alt="r-arrow"> 
             </div>
+        </div>
+        <div class="arrow-cont">
+            <img class="l-arrow" src="img/left-arrow.svg" alt="l-arrow">
+            <img class="r-arrow" src="img/right-arrow.svg" alt="r-arrow"> 
         </div>
     </div>
     <script src="js/app.js"></script>

@@ -1,63 +1,92 @@
-const formStorage = [
+const firstPage = document.querySelector(".first-page");
+const secondPage = document.querySelector(".second-page"); 
+
+const main_img = document.querySelector(".main-img");
+
+let interval;
+
+const currentPage = [
     {
-        makeForm: [
-            {for: "fname",text: "სახელი*",minLength: 3, maxLength: 255, p_class: "fname-p"},
-            {for: "lname",text: "გვარი*",minLength: 3, maxLength: 255, p_class: "lname-p"},
-            {for: "email",text: "მეილი*",minLength: 3, maxLength: 255, p_class: "email-p"}
-        ],
-        forImg: {
-            location: "img/Group 5.svg",
-            alt: "Main Img"
-        },
-        alert: "*-ით მონიშნული ველების შევსება სავალდებულოა"
+        imgLoc: "img/Group 5.svg",
+        makeVisible(){
+            firstPage.style.display = "flex"
+            main_img.src = this.imgLoc;
+            interval = setInterval(() => {
+              checkFirstPage();
+            },);
+        }
     },
-    {},
+    {
+        imgLoc: "img/Group 4.svg",
+        makeVisible(){
+            firstPage.style.display = "none";
+            secondPage.style.display = "flex"
+            main_img.src = this.imgLoc;
+            interval = setInterval(() => {
+                check2ndPage();  
+            },);
+        }
+    },
     {},
     {}
 ];
-{
-/* <label for="fname">სახელი*</label>
-<input type="text" id="fname" name="fname" minlength="3" maxlength="255" required>
-<p class="fname-p"></p> */}
 
-const maxLength = formStorage.length;
+
+
+const maxLength = currentPage.length;
 let currentIndex = 0;
 document.querySelector(".max-num").textContent = maxLength;
-// document.querySelector(".current-num").textContent = currentIndex + 1;
+document.querySelector(".current-num").textContent = currentIndex + 1;
 
 const form = document.querySelector(".form");
-const main_img = document.querySelector(".main-img");
 const form_cont = document.querySelector(".form-cont");
 
-function makePage(){
+const r_arrow = document.querySelector(".r-arrow");
+const l_arrow = document.querySelector(".l-arrow");
+
+
+const start_btn = document.querySelector(".start-btn");
+const start = document.querySelector(".start");
+const content = document.querySelector(".content");
+
+
+addEventListener("load", function(){
+    check2ndPage();
+    setTimeout(() =>{
+        start_btn.style.display = "flex";
+    },500);
+});
+
+start_btn.addEventListener("click", function(){
+    start.style.display = "none";
+    content.style.display = "unset";
+    distributorFunc();
+});
+
+r_arrow.addEventListener("click", function(){
+    clearInterval(interval);
+    currentIndex++;
+    distributorFunc();
+});
+l_arrow.addEventListener("click", function(){
+    clearInterval(interval);
+    currentIndex--;
+    distributorFunc();
+});
+
+function distributorFunc(){
     if(currentIndex == 0){
-        for(let i = 0; i< formStorage[currentIndex].makeForm.length;i++){
-            console.log(formStorage[currentIndex].makeForm[i].for);
-            let label = document.createElement("label");
-            form.appendChild(label);
-            label.textContent = formStorage[currentIndex].makeForm[i].text;
-            label.setAttribute("for", `${formStorage[currentIndex].makeForm[i].for}`);
-
-            let input = document.createElement("input");
-            form.appendChild(input);
-            input.setAttribute("type", "text");
-            input.setAttribute("name", `${formStorage[currentIndex].makeForm[i].for}`);
-            input.setAttribute("id",`${formStorage[currentIndex].makeForm[i].for}`);
-            input.setAttribute("minLength",`${formStorage[currentIndex].makeForm[i].minLength}`);
-            input.setAttribute("maxLength",`${formStorage[currentIndex].makeForm[i].maxLength}`);
-            input.required = true;
-            let paragraph = document.createElement("p");
-            form.append(paragraph);
-            paragraph.classList.add(`${formStorage[currentIndex].makeForm[i].p_class}`);
-        }
-        let alert_p = document.createElement("p");
-        form_cont.appendChild(alert_p);
-        alert_p.textContent = formStorage[currentIndex].alert;
-
-        main_img.src = formStorage[currentIndex].forImg.location;
+        currentPage[currentIndex].makeVisible();
+    }else if(currentIndex == 1){
+        currentPage[currentIndex].makeVisible();
     }
 }
-makePage();
+
+
+
+
+
+
 
 function checkFirstPage(){
     const fname = document.getElementById("fname").value;
@@ -66,12 +95,10 @@ function checkFirstPage(){
     const fname_alert = document.querySelector(".fname-p");
     const lname_alert = document.querySelector(".lname-p");
     const email_alert = document.querySelector(".email-p");
-
-    const r_arrow = document.querySelector(".r-arrow");
-
     let checkEmail = /.@redberry.ge\b/.test(email);
     let checkName  = /[ა-ჰ, a-z, A-Z]/.test(fname);
     let checkLname  = /[ა-ჰ, a-z, A-Z]/.test(lname);
+
     if(fname.length < 3 || fname.length < 3 || checkName == false){
         if(fname.length < 3){
             fname_alert.textContent = "სახელის ველი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან";
@@ -94,12 +121,49 @@ function checkFirstPage(){
         email_alert.textContent = "გთხოვთ დარეგისტრირდეთ Redberry-ს მეილით (youremail@redberry.ge)";
     }else{
         email_alert.textContent = "";
-        r_arrow.classList.add("show");
+        r_arrow.style.display = "flex";
     }
 }
 
-setInterval(() =>{
-    checkFirstPage();
-},500);
+function check2ndPage(){
+    const antiBody_Q = document.querySelector(".antibody-q");
+    const antiBody_Num = document.querySelector(".antibody_num");
+    const checkDate = document.querySelector(".checkdate");
 
+    r_arrow.style.display = "none";
+    const check_c19 = document.querySelectorAll('input[name=check-c19]');
+    const antibody = document.querySelectorAll('input[name=antibody]');
+
+    let numbers = document.getElementById("antibody-num").value;
+    let quantity = document.getElementById("quantity").value;
+    let date_19 = document.getElementById("date_19").value;
+
+    if(check_c19[0].checked){
+        r_arrow.style.display = "none";
+        antiBody_Q.style.display = "unset";
+        if(antibody[0].checked){
+            antiBody_Num.style.display = "unset";
+            r_arrow.style.display = "none";
+            checkDate.style.display = "none";
+            if(numbers > 0 && quantity > 0){
+                r_arrow.style.display = 'flex';
+            }
+            else{
+                r_arrow.style.display = 'none';
+            }
+        }else if(antibody[1].checked){
+            checkDate.style.display = "unset";
+            antiBody_Num.style.display = "none";
+            if(date_19 !== ""){
+                r_arrow.style.display = 'flex';
+            }
+            else{
+                r_arrow.style.display = 'none';
+            }
+        }
+    }if(check_c19[1].checked || check_c19[2].checked){
+        antiBody_Q.style.display = "none";
+        r_arrow.style.display = 'flex';
+    }  
+}
 
