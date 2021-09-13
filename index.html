@@ -32,6 +32,7 @@
                         <label class="question" for="email">მეილი*</label>
                         <input type="text" name="email" id="email" minlength="3" maxlength="255" required="">
                         <p class="email-p"></p>
+                        <p class="main-alert">*-ით მონიშნული ველების შევსება სავალდებულოა</p>
                    </form>
                     <form action="" class="form second-page dsp_none">
                         <div class="question-cont">
@@ -70,12 +71,124 @@
                             <input type="text" id="date_19" placeholder="დდ/თთ/წწ" onfocus="(this.type='date')">
                         </div>
                    </form>
-                   <p>*-ით მონიშნული ველების შევსება სავალდებულოა</p>
+                   <form action="" class="form third-page dsp_none">
+                    <div class="question-cont">
+                        <label class="question">უკვე აცრილი ხარ?*</label>
+                        <div>
+                            <input class="radio" type="radio" name="vaccinated" value="კი">
+                            <label class="label-r">კი</label>
+                        </div>
+                        <div>
+                            <input class="radio" type="radio" name="vaccinated" value="არა">
+                            <label class="label-r" for="არა">არა</label>
+                        </div>
+                  </div>
+                  <div class="question-cont choose_stage dsp_none">
+                        <label class="question">აირჩიე რა ეტაპზე ხარ*</label>
+                        <div>
+                            <input class="radio" type="radio" name="check-step">
+                            <label class="label-r">პირველი დოზა და დარესტრირებული ვარ მეორეზე</label>
+                        </div>
+                        <div>
+                            <input class="radio" type="radio" name="check-step">
+                            <label class="label-r" >სრულად აცრილი ვარ</label>
+                        </div>
+                        <div>
+                            <input class="radio" type="radio" name="check-step">
+                            <label class="label-r">პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე</label>
+                        </div>
+                        <p class="check-step-p dsp_none">რომ არ გადადო,<br>
+                            ბარემ ახლავე დარეგისტრირდი<br>
+                            <a href="https://booking.moh.gov.ge">https://booking.moh.gov.ge</a>
+                        </p>
+                  </div>
+                  <div class="question-cont  waiting-for dsp_none">
+                        <label class="question">რას ელოდები?*</label>
+                        <div>
+                            <input class="radio" type="radio" name="waiting" >
+                            <label class="label-r">დარეგისტრირებული ვარ და ველოდები რიცხვს</label>
+                        </div>
+                        <div>
+                            <input class="radio" type="radio" name="waiting" >
+                            <label class="label-r" >არ ვგეგმავ</label>
+                        </div>
+                        <div>
+                            <input class="radio" type="radio" name="waiting" >
+                            <label class="label-r" >გადატანილი მაქვს და ვგეგმავ აცრას</label>
+                        </div>
+                        <p class="only-link"><a href="https://booking.moh.gov.ge/">👉 https://booking.moh.gov.ge/</a></p>
+                        <p class="text-link">ახალი პროტოკოლით კოვიდის გადატანიდან 1<br>
+                             თვის შემდეგ შეგიძლიათ ვაქცინის გაკეთება.<br>  
+                            <br>
+                            👉 რეგისტრაციის ბმული<br>
+                            <a href="https://booking.moh.gov.ge/">https://booking.moh.gov.ge/</a></p>
+                    </div>  
+                   </form>
+                   <form action="" class="form forth-page dsp_none">
+                       <div class="text-for-4th">
+                        რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო, რომელსაც ჩვენი
+                        თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების განმავლობაში მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი — ჩვენთან გადმოსვლის. 
+                        <br>
+                        <br>პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ და ყოველდღიური კომუნიკაციაც გაიშვიათდა.
+                       </div>
+                       <div class="question-cont">
+                            <label class="question">რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები, სადაც ყველა სურვილისამებრ ჩაერთვება?*</label>
+                            <div>
+                            <input class="radio" type="radio" name="meetings">
+                            <label class="label-r">კვირაში ორჯერ</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="meetings">
+                                <label class="label-r">კვირაში ერთხელ</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="meetings">
+                                <label class="label-r">ორ კვირაში ერთხელ</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="meetings">
+                                <label class="label-r">თვეში ერთხელ</label>
+                            </div>
+                        </div>
+                        <div class="question-cont">     
+                            <label class="question">კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*</label>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">0</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">1</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">2</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">3</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">4</label>
+                            </div>
+                            <div>
+                                <input class="radio" type="radio" name="num-in-week">
+                                <label class="label-r">5</label>
+                            </div>
+                        </div>
+                        <label class="question" for="">რას ფიქრობ ფიზიკურ შეკრებებზე?</label>
+                        <input class="textarea" type="textarea">
+                        <label class="question" for="">რას ფიქრობ არსებულ გარემოზე:<br> 
+                            რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label>
+                        <input class="textarea" type="textarea">
+                        <p class="submit">დასრულება</p>
+                   </form>
                </div>
                <div class="img-cont">
                    <img class="main-img" src="" alt="img">
                </div>
-            </div>
+            </div>           
         </div>
         <div class="arrow-cont">
             <img class="l-arrow" src="img/left-arrow.svg" alt="l-arrow">

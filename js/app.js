@@ -1,5 +1,9 @@
 const firstPage = document.querySelector(".first-page");
 const secondPage = document.querySelector(".second-page"); 
+const thirdPage = document.querySelector(".third-page");
+const forthPage = document.querySelector(".forth-page");
+
+
 
 const main_img = document.querySelector(".main-img");
 
@@ -7,19 +11,21 @@ let interval;
 
 const currentPage = [
     {
-        imgLoc: "img/Group 5.svg",
+        imgLoc: "img/Group5.svg",
         makeVisible(){
             firstPage.style.display = "flex"
-            main_img.src = this.imgLoc;
+            secondPage.style.display = "none"
+            main_img.src = this.imgLoc
             interval = setInterval(() => {
               checkFirstPage();
             },);
         }
     },
     {
-        imgLoc: "img/Group 4.svg",
+        imgLoc: "img/Group4.svg",
         makeVisible(){
-            firstPage.style.display = "none";
+            firstPage.style.display = "none"
+            thirdPage.style.display = "none"
             secondPage.style.display = "flex"
             main_img.src = this.imgLoc;
             interval = setInterval(() => {
@@ -27,8 +33,29 @@ const currentPage = [
             },);
         }
     },
-    {},
-    {}
+    {
+        imgLoc: "img/doctor2.svg",
+        makeVisible(){
+            secondPage.style.display = "none"
+            forthPage.style.display = "none"
+            thirdPage.style.display = "flex"
+            main_img.src = this.imgLoc
+            interval = setInterval(() => {
+                check3rdPage(); 
+            },);
+        }
+    },
+    {
+        imgLoc: "img/Group6.svg",
+        makeVisible(){
+            thirdPage.style.display = "none";
+            forthPage.style.display = "flex"
+            main_img.src = this.imgLoc
+            setInterval(() => {
+               correctArrows(); 
+            }, interval);
+        }
+    }
 ];
 
 
@@ -36,7 +63,7 @@ const currentPage = [
 const maxLength = currentPage.length;
 let currentIndex = 0;
 document.querySelector(".max-num").textContent = maxLength;
-document.querySelector(".current-num").textContent = currentIndex + 1;
+
 
 const form = document.querySelector(".form");
 const form_cont = document.querySelector(".form-cont");
@@ -75,16 +102,17 @@ l_arrow.addEventListener("click", function(){
 });
 
 function distributorFunc(){
+    document.querySelector(".current-num").textContent = currentIndex + 1;
     if(currentIndex == 0){
         currentPage[currentIndex].makeVisible();
     }else if(currentIndex == 1){
         currentPage[currentIndex].makeVisible();
+    }else if(currentIndex == 2){
+        currentPage[currentIndex].makeVisible();
+    }else if(currentIndex == 3){
+        currentPage[currentIndex].makeVisible();
     }
 }
-
-
-
-
 
 
 
@@ -167,3 +195,71 @@ function check2ndPage(){
     }  
 }
 
+
+function check3rdPage(){
+    const chooseStage = document.querySelector(".choose_stage");
+    const check_step_p = document.querySelector(".check-step-p");
+    const waiting_for = document.querySelector(".waiting-for");
+    const only_link = document.querySelector(".only-link");
+    const text_link = document.querySelector(".text-link");
+
+    const vaccinated = document.querySelectorAll('input[name=vaccinated]');
+    const check_step = document.querySelectorAll("input[name=check-step]");
+    const waiting = document.querySelectorAll("input[name=waiting]");
+
+
+    if(vaccinated[0].checked){
+        chooseStage.style.display = "unset";
+        waiting_for.style.display = "none";
+        if(check_step[0].checked || check_step[1].checked){
+            r_arrow.style.display = "flex";
+            l_arrow.style.display = "flex";
+        }else if(check_step[2].checked){
+            check_step_p.style.display = "unset";
+        }else{
+            r_arrow.style.display = "none";
+            l_arrow.style.display = "none";
+            check_step_p.style.display = "none";
+        }
+    }
+    else if(vaccinated[1].checked){
+        chooseStage.style.display = "none";
+        waiting_for.style.display = "unset";
+        if(waiting[0].checked){
+            r_arrow.style.display = "flex";
+            l_arrow.style.display = "flex";
+        }else if(waiting[1].checked){
+            r_arrow.style.display = "flex";
+            l_arrow.style.display = "flex";
+            only_link.style.display = "unset";
+        }else if(waiting[2].checked){
+            r_arrow.style.display = "flex";
+            l_arrow.style.display = "flex";
+            text_link.style.display = "unset";
+        }
+        else{
+            r_arrow.style.display = "none";
+            l_arrow.style.display = "none";
+            text_link.style.display = "none";
+            only_link.style.display = "none";
+        }
+
+    }
+    else{
+        chooseStage.style.display = "none";
+        waiting_for.style.display = "none";
+        r_arrow.style.display = "none";
+        l_arrow.style.display = "none";
+    }
+}
+
+function correctArrows(){
+    if(currentIndex == 0){
+        l_arrow.style.display = "none";
+    }else if(currentIndex == 3){
+        r_arrow.style.display = "none";
+    }else{
+        l_arrow.style.display = "flex";
+        r_arrow.style.display = "flex";
+    }
+}
